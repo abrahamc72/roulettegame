@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roulette Betting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212; /* Dark background */
+            color: #b3b3b3; /* Light grey text */
+            margin: 0;
+            padding: 20px;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1, h2 {
+            background: linear-gradient(90deg, #80E8DD, #7CC2F6, #AF81E4, #E784BA, #F9C1A0, #B7F6AF);
+            background-size: 600% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 10s ease infinite;
+            margin: 10px 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #212121; /* Medium-dark background */
+            border-radius: 10px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #535353; /* Lighter grey border */
+            background-color: #121212; /* Dark background */
+            color: #b3b3b3; /* Light grey text */
+            border-radius: 5px;
+            width: calc(100% - 22px);
+        }
+
+        button {
+            background-color: #535353; /* Lighter grey background */
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #7CC2F6; /* Maya Blue on hover */
+        }
+
+        .display-area {
+            background-color: #212121; /* Medium-dark background */
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            color: #b3b3b3; /* Light grey text */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Roulette Betting Game</h1>
+        <input type="text" id="betInput" placeholder="Enter bet e.g., Bob 21 500">
+        <button onclick="placeBet()">Place Bet</button>
+        <button onclick="clearBets()">Clear Bets</button>
+        <input type="text" id="winInput" placeholder="Enter winning number e.g., 10">
+        <button onclick="calculateWinnings()">Declare Winner</button>
+        
+        <h2>Current Bets</h2>
+        <div id="currentBets" class="display-area"></div>
+
+        <h2>Winning Bets</h2>
+        <div id="winningBets" class="display-area"></div>
+
+        <h2>House Profit</h2>
+        <div id="houseProfit" class="display-area">0</div>
+    </div>
+
+    <script src="roulette.js"></script> <!-- Link to the JavaScript file -->
+</body>
+</html>
