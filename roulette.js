@@ -98,8 +98,8 @@ class RouletteBetting {
         switch(numNumbers) {
             case 1: return 35;
             case 2: return 17;
-            case 3: return 8;
-            case 4: return 3;
+            case 3: return 11;
+            case 4: return 8;
             default: return 0;
         }
     }
