@@ -1,3 +1,19 @@
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('betInput').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            placeBet();
+        }
+    });
+
+    document.getElementById('winInput').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            calculateWinnings();
+        }
+    });
+});
+
 class RouletteBetting {
     constructor() {
         this.bets = [];
