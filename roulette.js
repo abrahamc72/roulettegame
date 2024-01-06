@@ -54,20 +54,18 @@ class RouletteBetting {
 
         this.bets.forEach(bet => {
             const { name, betType, numbers, betAmount } = bet;
-
+            let winnings = 0;
             if (betType === "numbers" && numbers.includes(winningNumber)) {
-                const winnings = betAmount * (this.getPayoutRatio(numbers.length) + 1);
+                winnings = betAmount * (this.getPayoutRatio(numbers.length) + 1);
                 winners.push({ name, winnings, betType: "numbers" });
-                totalPayout += winnings;
             } else if (["first", "second", "third"].includes(betType) && this.checkWinningBetType(betType, winningNumber)) {
-                const winnings = betAmount * 3; // 2:1 payout for 1st, 2nd, 3rd
+                winnings = betAmount * 3; // 2:1 payout for 1st, 2nd, 3rd
                 winners.push({ name, winnings, betType: betType });
-                totalPayout += winnings;
             } else if (this.checkWinningBetType(betType, winningNumber)) {
-                const winnings = betAmount * 2; // Even/Odd, Red/Black
+                winnings = betAmount * 2; // Even/Odd, Red/Black
                 winners.push({ name, winnings, betType: betType });
-                totalPayout += winnings;
             }
+            totalPayout += winnings;
         });
 
         this.houseProfit += (this.totalBetAmount() - totalPayout);
