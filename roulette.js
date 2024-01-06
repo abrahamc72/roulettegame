@@ -106,6 +106,11 @@ class RouletteBetting {
 
     updateCurrentBetsDisplay() {
         const display = document.getElementById('currentBets');
+
+        if (this.bets.length === 0) {
+            display.textContent = "No Current Bets";
+            return;
+        }
         display.innerHTML = this.bets.map(bet => {
             if (bet.betType === "numbers") {
                 return `${bet.name}: ${bet.numbers.join(', ')} - $${bet.betAmount}`;
