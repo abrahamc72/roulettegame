@@ -125,17 +125,17 @@
 
         <table class="payout-table">
             <tr><th>Bet Type</th><th>Payout</th></tr>
-            <tr><td>1 Number <span style="color: #3d3d3d">(e.g., Bob 1 100)</span></td><td>35:1</td></tr>
-            <tr><td>2 Number Spread <span style="color: #3d3d3d">(e.g., Bob 1,13 100)</span></td><td>17:1</td></tr>
-            <tr><td>3 Number Spread <span style="color: #3d3d3d">(e.g., Bob 1,13,22 100)</span></td><td>8:1</td></tr>
-            <tr><td>4 Number Spread <span style="color: #3d3d3d">(e.g., Bob 1,13,22,30 100)</span></td><td>4:1</td></tr>
-            <tr><td>First/Second/Third 12s <span style="color: #3d3d3d">(e.g., Bob First 100)</span></td><td>3:1</td></tr>
-            <tr><td>Black/Red Even/Odd <span style="color: #3d3d3d">(e.g., Bob Even 100)</span></td><td>2:1</td></tr>
+            <tr><td>1 Number <span style="color: #3d3d3d">(e.g., Bob 100 1)</span></td><td>35:1</td></tr>
+            <tr><td>2 Number Spread <span style="color: #3d3d3d">(e.g., Bob 100 1,13)</span></td><td>17:1</td></tr>
+            <tr><td>3 Number Spread <span style="color: #3d3d3d">(e.g., Bob 100 1,13,22)</span></td><td>8:1</td></tr>
+            <tr><td>4 Number Spread <span style="color: #3d3d3d">(e.g., Bob 100 1,13,22,30 )</span></td><td>4:1</td></tr>
+            <tr><td>First/Second/Third 12s <span style="color: #3d3d3d">(e.g., Bob 100 First)</span></td><td>3:1</td></tr>
+            <tr><td>Black/Red Even/Odd <span style="color: #3d3d3d">(e.g., Bob 100 Even)</span></td><td>2:1</td></tr>
         </table>
         
 
         <div class="input-group">
-            <input type="text" id="betInput" placeholder="Enter bet e.g., Bob 21|first|red|black|odd|even 500">
+            <input type="text" id="betInput" placeholder="Enter bet command.">
             <button onclick="placeBet()">Place Bet</button>
             <button onclick="clearBets()">Clear Bets</button>
         </div>

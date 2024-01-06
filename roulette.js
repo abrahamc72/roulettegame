@@ -24,8 +24,8 @@ class RouletteBetting {
     placeBet(input) {
         const parts = input.split(' ');
         const name = parts[0];
-        let betType = parts[1].toLowerCase();
-        const betAmount = parseInt(parts[2], 10);
+        let betType = parts[2].toLowerCase();
+        const betAmount = parseInt(parts[1], 10);
 
         // Convert 37 to '0' and 38 to '00' for betting
         if (betType === "37") betType = "0";
