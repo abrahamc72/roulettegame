@@ -63,46 +63,92 @@
             border-radius: 5px;
             color: #b3b3b3; /* Light grey text */
         }
+
+        .input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.input-group input {
+    flex-grow: 3; /* Allows input to take more space */
+    margin-right: 5px; /* Spacing between input and button */
+}
+
+.input-group button {
+    flex-grow: 1; /* Smaller growth factor for buttons */
+    flex-basis: 0; /* Ensures buttons start at 0 width and grow as needed */
+}
+
+/* Ensure all buttons have consistent sizing */
+.input-group button {
+    flex-basis: 20%; /* Adjust as needed for consistent size */
+}
+
+/* Adjust for smaller screens or specific design needs */
+@media (max-width: 600px) {
+    .input-group button {
+        flex-basis: 30%; /* Larger buttons on smaller screens */
+    }
+}
+
+.payout-table {
+    margin: 20px auto;
+    width: 80%; /* Adjust width as needed */
+    border-collapse: collapse;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Ensures the border radius clips the content */
+}
+
+.payout-table th, .payout-table td {
+    border-bottom: 1px solid #535353;
+    padding: 10px;
+    text-align: left;
+    color: #E6E6E6; /* Lighter text for better readability */
+}
+
+.payout-table th {
+    background: rgba(0, 0, 0, 0.3); /* Slightly darker header background */
+    color: #FFF; /* White text for headers */
+}
+
+.payout-table tr:last-child td {
+    border-bottom: none; /* Remove border from the last row */
+}
     </style>
 </head>
 <body>
-    <div style="text-align:center"class="container">
+    <div class="container">
         <h1>Roulette Betting Game</h1>
-        <div style="text-align:center">
-            <h7> Original bet + payout included in Winning Bets.
-            </h7>
-        </div>
-        <div style="text-align:center;margin-bottom:2px">
-            <h7> 1 number pays 35:1
-            </h7>
-        </div>
-        <div style="text-align:center;margin-bottom:2px">
-            <h7> 2 number spread pays 17:1
-            </h7>
-        </div>
-        <div style="text-align:center;margin-bottom:2px">
-            <h7> 3 number spread pays 8:1
-            </h7>
-        </div>
-        <div style="text-align:center;margin-bottom:2px">
-            <h7> 4 number spread pays 4:1
-            </h7>
-        </div>
-        <div style="text-align:center;margin-bottom:20px">
-            <h7> Black/Red Even/Odd pays 2:1
-            </h7>
-        </div>
+
+        <table class="payout-table">
+            <tr><th>Bet Type</th><th>Payout</th></tr>
+            <tr><td>1 Number</td><td>35:1</td></tr>
+            <tr><td>2 Number Spread</td><td>17:1</td></tr>
+            <tr><td>3 Number Spread</td><td>8:1</td></tr>
+            <tr><td>4 Number Spread</td><td>4:1</td></tr>
+            <tr><td>First/Second/Third 12s</td><td>3:1</td></tr>
+            <tr><td>Black/Red Even/Odd</td><td>2:1</td></tr>
+        </table>
         
-        <input type="text" id="betInput" placeholder="Enter bet e.g., Bob 21|first|red|black|odd|even 500">
-        <button onclick="placeBet()">Place Bet</button>
-        <button onclick="clearBets()">Clear Bets</button>
-        <input type="text" id="winInput" placeholder="Enter winning number e.g., 10">
-        <button onclick="calculateWinnings()">Declare Winner</button>
+
+        <div class="input-group">
+            <input type="text" id="betInput" placeholder="Enter bet e.g., Bob 21|first|red|black|odd|even 500">
+            <button onclick="placeBet()">Place Bet</button>
+            <button onclick="clearBets()">Clear Bets</button>
+        </div>
+        <div class="input-group">
+            <input type="text" id="winInput" placeholder="Enter winning number e.g., 10">
+            <button onclick="calculateWinnings()">Winner</button>
+        </div>
         
         <h2>Current Bets</h2>
         <div id="currentBets" class="display-area"></div>
 
         <h2>Winning Bets</h2>
+        <h7>Original bet included.</h6>
         <div id="winningBets" class="display-area"></div>
 
         <h2>House Profit</h2>
