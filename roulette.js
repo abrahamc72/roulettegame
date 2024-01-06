@@ -125,6 +125,10 @@ class RouletteBetting {
 
     updateWinningBetsDisplay(winners) {
         const display = document.getElementById('winningBets');
+        if (winners.length === 0) {
+            display.textContent = "No Winning Bets";
+            return;
+        }
         display.innerHTML = winners.map(winner => `${winner.name} wins $${winner.winnings} on ${winner.betType}`).join('<br>');
     }
 
