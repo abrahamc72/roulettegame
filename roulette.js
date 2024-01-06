@@ -56,15 +56,15 @@ class RouletteBetting {
             const { name, betType, numbers, betAmount } = bet;
 
             if (betType === "numbers" && numbers.includes(winningNumber)) {
-                const winnings = betAmount * this.getPayoutRatio(numbers.length) + betAmount;
+                const winnings = betAmount * (this.getPayoutRatio(numbers.length) + 1);
                 winners.push({ name, winnings, betType: "numbers" });
                 totalPayout += winnings;
             } else if (["first", "second", "third"].includes(betType) && this.checkWinningBetType(betType, winningNumber)) {
-                const winnings = betAmount * 2 + betAmount; // 2:1 payout for 1st, 2nd, 3rd
+                const winnings = betAmount * 3; // 2:1 payout for 1st, 2nd, 3rd
                 winners.push({ name, winnings, betType: betType });
                 totalPayout += winnings;
             } else if (this.checkWinningBetType(betType, winningNumber)) {
-                const winnings = betAmount * 1 + betAmount; // Even/Odd, Red/Black
+                const winnings = betAmount * 2; // Even/Odd, Red/Black
                 winners.push({ name, winnings, betType: betType });
                 totalPayout += winnings;
             }
