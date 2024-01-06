@@ -119,14 +119,14 @@ class RouletteBetting {
         display.innerHTML = this.bets.map((bet, index) => {
             if (bet.betType === "numbers") {
                 return `<div>${bet.name}: ${bet.numbers.join(', ')} - $${bet.betAmount} 
-                            <i class="fa fa-close" style="color:indianred;" onclick="roulette.removeBetByIndex(${index})"/>
+                            <i class="fa fa-close" style="color:indianred;" onclick="roulette.removeBetByIndex(${index})"></i>
                         </div>`;
             } else {
                 let displayBetType = bet.betType;
                 if (displayBetType === "0") displayBetType = "37 (0)";
                 if (displayBetType === "00") displayBetType = "38 (00)";
                 return `<div>${bet.name}: ${displayBetType} - $${bet.betAmount}
-                            <i class="fa fa-close" style="color:indianred;" onclick="roulette.removeBetByIndex(${index})"/>
+                            <i class="fa fa-close" style="color:indianred;" onclick="roulette.removeBetByIndex(${index})"></i>
                         </div>`;
             }
         }).join('<br>');
