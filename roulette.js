@@ -41,15 +41,15 @@ class RouletteBetting {
 
             if (betType === "numbers" && numbers.includes(winningNumber)) {
                 const winnings = betAmount * this.getPayoutRatio(numbers.length) + betAmount;
-                winners.push({ name, winnings });
+                winners.push({ name, winnings, betType: "numbers" });
+                totalPayout += winnings;
+            } else if (["first", "second", "third"].includes(betType) && this.checkWinningBetType(betType, winningNumber)) {
+                const winnings = betAmount * 2 + betAmount; // 2:1 payout for 1st, 2nd, 3rd
+                winners.push({ name, winnings, betType: betType });
                 totalPayout += winnings;
             } else if (this.checkWinningBetType(betType, winningNumber)) {
-                const winnings = betAmount * 1 + betAmount; // Include original bet for even/odd, red/black, etc.
-                winners.push({ name, winnings });
-                totalPayout += winnings;
-            } else if ((betType === "0" && winningNumber === "0") || (betType === "00" && winningNumber === "00")) {
-                const winnings = betAmount * 35 + betAmount; // Special case for '0' and '00'
-                winners.push({ name, winnings });
+                const winnings = betAmount * 1 + betAmount; // Even/Odd, Red/Black
+                winners.push({ name, winnings, betType: betType });
                 totalPayout += winnings;
             }
         });
@@ -104,7 +104,7 @@ class RouletteBetting {
 
     updateWinningBetsDisplay(winners) {
         const display = document.getElementById('winningBets');
-        display.innerHTML = winners.map(winner => `${winner.name} wins $${winner.winnings}`).join('<br>');
+        display.innerHTML = winners.map(winner => `${winner.name} wins $${winner.winnings} on ${winner.betType}`).join('<br>');
     }
 
     updateHouseProfitDisplay() {
