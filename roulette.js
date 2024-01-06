@@ -60,7 +60,7 @@ class RouletteBetting {
                 winners.push({ name, winnings, betType });
             }
               else if (["0","00"].includes(betType) && this.checkWinningBetType(betType, winningNumber)) {
-                winnings = betAmount * 36; // Even/Odd, Red/Black
+                winnings = betAmount * 36; // 0 or 00
                 winners.push({ name, winnings, betType });
             } else if (["first", "second", "third"].includes(betType) && this.checkWinningBetType(betType, winningNumber)) {
                 winnings = betAmount * 3; // 2:1 payout for 1st, 2nd, 3rd
@@ -98,8 +98,8 @@ class RouletteBetting {
         switch(numNumbers) {
             case 1: return 35;
             case 2: return 17;
-            case 3: return 8;
-            case 4: return 3;
+            case 3: return 11;
+            case 4: return 8;
             default: return 0;
         }
     }
