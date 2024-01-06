@@ -104,6 +104,11 @@ class RouletteBetting {
         return this.bets.reduce((acc, bet) => acc + bet.betAmount, 0);
     }
 
+    removeBetByIndex(index) {
+        this.bets.splice(index, 1);
+        roulette.updateCurrentBetsDisplay();
+    }
+
     updateCurrentBetsDisplay() {
         const display = document.getElementById('currentBets');
 
@@ -111,14 +116,18 @@ class RouletteBetting {
             display.textContent = "No Current Bets";
             return;
         }
-        display.innerHTML = this.bets.map(bet => {
+        display.innerHTML = this.bets.map((bet, index) => {
             if (bet.betType === "numbers") {
-                return `${bet.name}: ${bet.numbers.join(', ')} - $${bet.betAmount}`;
+                return `<div>${bet.name}: ${bet.numbers.join(', ')} - $${bet.betAmount} 
+                            <i class="fa fa-close" style="color:indianred;" onclick="roulette.removeBetByIndex(${index})"/>
+                        </div>`;
             } else {
                 let displayBetType = bet.betType;
                 if (displayBetType === "0") displayBetType = "37 (0)";
                 if (displayBetType === "00") displayBetType = "38 (00)";
-                return `${bet.name}: ${displayBetType} - $${bet.betAmount}`;
+                return `<div>${bet.name}: ${displayBetType} - $${bet.betAmount}
+                            <i class="fa fa-close" style="color:indianred;" onclick="roulette.removeBetByIndex(${index})"/>
+                        </div>`;
             }
         }).join('<br>');
     }
